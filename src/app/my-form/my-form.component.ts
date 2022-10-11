@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-my-form',
@@ -7,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyFormComponent implements OnInit {
 
-  constructor() { }
+  myForm: FormGroup
+
+  langs: string[] = [
+    "English",
+    "Chinese"
+  ]
+
+
+  constructor() {
+    this.myForm = new FormGroup({
+      name: new FormGroup({
+        firstName: new FormControl(),
+        lastName: new FormControl(),
+      }),
+      email: new FormControl(),
+      password: new FormControl(),
+      language: new FormControl()
+    });
+  }
 
   ngOnInit(): void {
   }
